@@ -3,16 +3,29 @@ import React from 'react'
 function Result(props) {
 
     let title = '';
-    console.log('xxx', props.result)    
-    // if(props.results.data) {
-    //     title = props.results.data.length > 0 ? props.data[0].result.title : 'no title';
-    // }
+    let imgLinks = [];
+    if (props.result.data) {
+        let { data } = props.result;
+        title = data.length > 0 ? data[0].title : 'no title';
+    }
+
+    if (props.result.links) {
+        let { links } = props.result;
+        imgLinks = links;
+    }
 
     return (
         <>
             <div>{title}</div>
             <div>
-                {/* <image scr={} /> */}
+                {   
+                    imgLinks.map( (link, index) => {
+                        if (link.render === 'image') {
+                            return <img key={index} width="150px" src={link.href} alt={title}/>
+                        }
+                    })
+                }
+                
             </div>
             <p>----------------------------------</p>
         </>

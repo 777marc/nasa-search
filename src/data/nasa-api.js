@@ -9,4 +9,3 @@ const get = searchCriteria => {
 module.exports = {
     get
 }
-
